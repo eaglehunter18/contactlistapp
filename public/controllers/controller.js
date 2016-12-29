@@ -1,27 +1,21 @@
 var myApp = angular.module('myApp', []);
-myApp.controller('AppCtrl', function($scope, $http) {
+myApp.controller('AppCtrl',['$scope','$http' , function($scope,$http) {
+console.log("Hello World from controller.js");
 
-    console.log("Hello World from controller.js");
-    $http.get('/contactlist')
+    var refresh=function(){
+    $http.get('/contactlist').then(function successCallback(response){
+    console.log("I got the data I requested it is below");
+     $scope.contactlist=response.data;
+     console.log($scope.contactlist);
+    },
+       function errorCallback(response) {
+       // called asynchronously if an error occurs
+       // or server returns response with an error status.
+       console.log("Error , I did not  got the data I requested from server");
+       }
 
-person1 = {
-name:'ahmad',
-email:'ahmad@gmail.com',
-number:'0598972598'
-};
-person2 = {
-name:'ahmad1',
-email:'ahmad1@gmail.com',
-number:'10598972598'
-};
-person3 = {
-name:'ahmad2',
-email:'ahmad2@gmail.com',
-number:'20598972598'
-};
-var contactlist=[person1,person2,person3];
+    );
+    };
+    refresh();
 
-$scope.contactlist=contactlist;
-
-console.log($scope.contactlist);
-});
+}]);﻿
