@@ -1,3 +1,5 @@
+
+
 var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl',['$scope','$http' , function($scope,$http) {
 console.log("Hello World from controller.js");
@@ -7,15 +9,42 @@ console.log("Hello World from controller.js");
     console.log("I got the data I requested it is below");
      $scope.contactlist=response.data;
      console.log($scope.contactlist);
+
     },
        function errorCallback(response) {
        // called asynchronously if an error occurs
        // or server returns response with an error status.
        console.log("Error , I did not  got the data I requested from server");
        }
-
+     
     );
+
     };
     refresh();
+    $scope.addContact=function(){
+    	//view entered data in console
+    	console.log($scope.contact);
+    	//send data to contactlist
+    	$http.post('/contactlist',$scope.contact).then(
+    		//if response success we print data of response
+    		function successCallback(response){
+    		console.log(response.data);
+    		refresh();
+    		$scope.contact.name="";
+    		$scope.contact.email="";
+    		$scope.contact.number="";
+    		$scope.contact.fbid="";
+    		$scope.contact.fburl="";
+
+    	},
+    	//if response failed we print data of error
+    	function errorCallback(response) {
+       // called asynchronously if an error occurs
+       // or server returns response with an error status.
+       console.log("Error , I can not view  the data I requested from server after we store it in database");
+    }
+    );//end of http request
+};//end of function add
+
 
 }]);﻿
