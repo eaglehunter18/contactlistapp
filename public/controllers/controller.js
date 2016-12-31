@@ -65,7 +65,6 @@ $http.delete('/contactlist/' + id).then(function successCallback(response) {
 $scope.edit=function(id){
 	//this is 
 console.log("id of the user we want to edit "+id);
-
 $http.get('/contactlist/' + id).then(function successCallback(response) {
 	//move data of selected user to $scope.contact(input tags)	
 $scope.contact=response.data;
@@ -78,6 +77,8 @@ function errorCallback(response) {
     }
     );//end of http request
 };//end of $scope.edit
+
+
 //when finish entering new data
 $scope.update=function(){
 //prints _id of selected user(we moved data of this user to $scope to edit)
@@ -95,5 +96,12 @@ $scope.update=function(){
   );
 };//end of $scope.updat function
 
-
+$scope.deselect = function() {
+	 $scope.contact="";
+  // $scope.contact.name = "";
+  // $scope.contact.email = "";
+  // $scope.contact.number = "";
+  // $scope.contact.fbid = "";
+  // $scope.contact.fburl = "";
+}
 }]);﻿
