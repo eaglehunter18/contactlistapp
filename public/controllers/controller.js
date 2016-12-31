@@ -1,6 +1,6 @@
 
 
-var myApp = angular.module('myApp', []);
+var myApp = angular.module('myApp', ['angularUtils.directives.dirPagination']);
 myApp.controller('AppCtrl',['$scope','$http' , function($scope,$http) {
 console.log("Hello World from controller.js");
 
