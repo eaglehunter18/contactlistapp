@@ -33,9 +33,12 @@
        <table class="table">
        	<thead>
        	<tr>
-<th>Full Name</th>
-<th>Email</th>
-<th>Phone #</th>
+<th ng-click="sort('name')">Full Name<span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+</th>
+<th ng-click="sort('email')">Email<span class="glyphicon sort-icon" ng-show="sortKey=='email'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+</th>
+<th ng-click="sort('number')">Phone #<span class="glyphicon sort-icon" ng-show="sortKey=='number'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+</th>
 <th>Edit</th>
 <th>Delete</th>
 <th>&nbsp;</th>
@@ -49,7 +52,7 @@
             <!-- <td><input class="form-control" ng-model="contact.fbid"></td>
             <td><input class="form-control" ng-model="contact.fburl"></td> -->
             <td><button class="btn btn-primary" ng-click="addContact()">Add User</button></td>
-            <td><button class="btn btn-info" ng-corderBy:sortKey:reverse|lick="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="clear()">Clear</button> </td>
+            <td><button class="btn btn-info" ng-corderBy:sortKey:reverse ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="clear()">Clear</button> </td>
 
         </tr>
 

@@ -15,6 +15,7 @@ console.log("Hello World from controller.js");
      $scope.contactlist=response.data;
      console.log($scope.contactlist);
 
+
     },
        function errorCallback(response) {
        // called asynchronously if an error occurs
@@ -35,6 +36,7 @@ console.log("Hello World from controller.js");
     		function successCallback(response){
     		console.log(response.data);
     		refresh();
+
     		$scope.contact.name="";
     		$scope.contact.email="";
     		$scope.contact.number="";
@@ -91,6 +93,11 @@ $scope.update=function(){
 //send put request to server with new data($scope.contact)
 	$http.put('/contactlist/'+$scope.contact._id,$scope.contact).then(function successCallback(response) {
     refresh();
+   $scope.contact.name = "";
+  $scope.contact.email = "";
+  $scope.contact.number = "";
+  $scope.contact.fbid = "";
+  $scope.contact.fburl = "";
   },
   //if response failed we print data of error
     	function errorCallback(response) {
@@ -109,4 +116,8 @@ $scope.clear = function() {
   // $scope.contact.fbid = "";
   // $scope.contact.fburl = "";
 }
+$scope.sort = function(keyname){
+        $scope.sortKey = keyname;   //set the sortKey to the param passed
+        $scope.reverse = !$scope.reverse; //if true make it false and vice versa
+    }
 }]);﻿
