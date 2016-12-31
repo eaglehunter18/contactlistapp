@@ -41,10 +41,59 @@ console.log("Hello World from controller.js");
     	function errorCallback(response) {
        // called asynchronously if an error occurs
        // or server returns response with an error status.
-       console.log("Error , I can not view  the data I requested from server after we store it in database");
+       console.log("Error while sending post request to server");
     }
     );//end of http request
 };//end of function add
+
+$scope.remove=function(id){
+console.log("id of the item we want to delete from controller is "+id);
+//$http.delete('/contactlist'+id);
+$http.delete('/contactlist/' + id).then(function successCallback(response) {
+	console.log("id of the user we want to delete "+id);
+    refresh();
+  },
+  //if response failed we print data of error
+    	function errorCallback(response) {
+       // called asynchronously if an error occurs
+       // or server returns response with an error status.
+       console.log("Error while sending delete request to server");
+    }
+  );
+};//end of $scope.remove
+
+$scope.edit=function(id){
+	//this is 
+console.log("id of the user we want to edit "+id);
+
+$http.get('/contactlist/' + id).then(function successCallback(response) {
+	//move data of selected user to $scope.contact(input tags)	
+$scope.contact=response.data;
+console.log("response data "+response.data);
+},
+function errorCallback(response) {
+       // called asynchronously if an error occurs
+       // or server returns response with an error status.
+       console.log("Error while sending get request to server to get data of selected user (select to Edit)");
+    }
+    );//end of http request
+};//end of $scope.edit
+//when finish entering new data
+$scope.update=function(){
+//prints _id of selected user(we moved data of this user to $scope to edit)
+	console.log($scope.contact._id);
+//send put request to server with new data($scope.contact)
+	$http.put('/contactlist/'+$scope.contact._id,$scope.contact).then(function successCallback(response) {
+    refresh();
+  },
+  //if response failed we print data of error
+    	function errorCallback(response) {
+       // called asynchronously if an error occurs
+       // or server returns response with an error status.
+       console.log("Error while sending put request to server");
+    }
+  );
+};//end of $scope.updat function
 
 
 }]);﻿
