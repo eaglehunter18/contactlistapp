@@ -11,6 +11,25 @@
 <body>
 	<div class="container"    ng-app="myApp" ng-controller="AppCtrl">
        <h1>Facebook List App</h1>
+       <div class="row">
+            <div class="col-md-4">
+                Search By:
+                <select class="form-control" ng-model='SearchTerm'>
+                    <option value='$'>Any</option>
+                    <option value='name'>Name</option>
+                    <option value='email'>Email</option>
+                    <option value='number'>Phone#</option>
+                </select>
+            </div>
+      </div>
+      <div class="row">
+            <div class="col-md-4">
+                Search Key:
+                <input type="text" class="form-control" ng-model="searchKeyword[SearchTerm]">
+            </div>
+        </div>
+        <br />
+      <!--  <input type="text" data-ng-model="searchTeam">  -->
        <table class="table">
        	<thead>
        	<tr>
@@ -30,12 +49,12 @@
             <!-- <td><input class="form-control" ng-model="contact.fbid"></td>
             <td><input class="form-control" ng-model="contact.fburl"></td> -->
             <td><button class="btn btn-primary" ng-click="addContact()">Add User</button></td>
-            <td><button class="btn btn-info" ng-click="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="deselect()">Clear</button> </td>
+            <td><button class="btn btn-info" ng-corderBy:sortKey:reverse|lick="update()">Update</button>&nbsp;&nbsp;<button class="btn btn-info" ng-click="clear()">Clear</button> </td>
 
         </tr>
 
       </tr>
-<tr ng-repeat="contact in contactlist">
+<tr data-ng-repeat="contact in contactlist |orderBy:sortKey:reverse| filter: searchKeyword">
       <td>{{contact.name}}</td>
        <td>{{contact.email}}</td>
         <td>{{contact.number}}</td>

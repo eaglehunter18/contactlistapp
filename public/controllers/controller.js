@@ -4,6 +4,11 @@ var myApp = angular.module('myApp', []);
 myApp.controller('AppCtrl',['$scope','$http' , function($scope,$http) {
 console.log("Hello World from controller.js");
 
+
+ $scope.searchKeyword = {}
+ $scope.SearchTerm = '$';
+
+
     var refresh=function(){
     $http.get('/contactlist').then(function successCallback(response){
     console.log("I got the data I requested it is below");
@@ -96,7 +101,7 @@ $scope.update=function(){
   );
 };//end of $scope.updat function
 
-$scope.deselect = function() {
+$scope.clear = function() {
 	 $scope.contact="";
   // $scope.contact.name = "";
   // $scope.contact.email = "";
