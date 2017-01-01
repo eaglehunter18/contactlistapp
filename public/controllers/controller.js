@@ -1,6 +1,6 @@
-
-
+//create A module by using the AngularJS function angular.module 
 var myApp = angular.module('myApp', ['angularUtils.directives.dirPagination']);
+//Add a controller to myApp, and refer to the controller with the ng-controller directive in index.htnl
 myApp.controller('AppCtrl',['$scope','$http' , function($scope,$http) {
 console.log("Hello World from controller.js");
 
@@ -109,12 +109,12 @@ $scope.update=function(){
 };//end of $scope.updat function
 
 $scope.clear = function() {
-	 $scope.contact="";
-  // $scope.contact.name = "";
-  // $scope.contact.email = "";
-  // $scope.contact.number = "";
-  // $scope.contact.fbid = "";
-  // $scope.contact.fburl = "";
+	 //$scope.contact="";
+  $scope.contact.name = "";
+  $scope.contact.email = "";
+  $scope.contact.number = "";
+  $scope.contact.fbid = "";
+  $scope.contact.fburl = "";
 }
 $scope.sort = function(keyname){
         $scope.sortKey = keyname;   //set the sortKey to the param passed

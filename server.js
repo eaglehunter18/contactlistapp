@@ -1,10 +1,16 @@
+
+//The first thing we need to do is require express, and create an app
 var express=require('express');
 var app=express();
+//connect to our MongoDB server
 var mongojs=require('mongojs');
 var db=mongojs('contactlist',['contactlist'])
+//body-parser extracts the entire body portion of an incoming request stream and exposes it on req.body
 var  bodyParser=require('body-parser');
-app.use(express.static(__dirname + "/public"));
 app.use(bodyParser.json());
+
+app.use(express.static(__dirname + "/public"));
+
 
 app.get('/contactlist',function(req,res){
 console.log('I received a GET request for users')
